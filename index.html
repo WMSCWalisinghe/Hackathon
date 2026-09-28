@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community Skill-Share Board</title>
+
+  <!-- CSS lives in its own file -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase SDK (must load BEFORE script.js) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+
+  <h1>🤝 Community Skill-Share Board</h1>
+  <p class="subtitle">Offer a skill you can teach, or ask for help with one. Posts are saved for everyone to see.</p>
+
+  <div class="status" id="status">Connecting to Firebase...</div>
+
+  <!-- ===== FORM ===== -->
+  <form id="postForm">
+    <div>
+      <label>I want to...</label>
+      <div class="type-toggle">
+        <button type="button" class="type-btn active" data-type="offer">🟢 Offer a skill</button>
+        <button type="button" class="type-btn" data-type="request">🟠 Request help</button>
+      </div>
+    </div>
+
+    <div>
+      <label for="nameInput">Your name</label>
+      <input type="text" id="nameInput" placeholder="e.g. Amaya" required>
+    </div>
+
+    <div>
+      <label for="skillInput">Skill</label>
+      <input type="text" id="skillInput" placeholder="e.g. Guitar basics, Excel formulas" required>
+    </div>
+
+    <div>
+      <label for="descInput">Short description</label>
+      <textarea id="descInput" placeholder="e.g. Can teach beginner chords, weekends only" required></textarea>
+    </div>
+
+    <div>
+      <label for="contactInput">Contact / how to reach you</label>
+      <input type="text" id="contactInput" placeholder="e.g. Instagram @amaya or email" required>
+    </div>
+
+    <button type="submit" class="submit" id="submitBtn">Post to Board</button>
+  </form>
+
+  <!-- ===== FILTER BUTTONS ===== -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="offer">Offers</button>
+    <button class="filter-btn" data-filter="request">Requests</button>
+  </div>
+
+  <!-- ===== POSTS APPEAR HERE ===== -->
+  <div class="board" id="board">
+    <div class="empty-note">No posts yet — be the first!</div>
+  </div>
+
+  <!-- JavaScript lives in its own file (loaded last) -->
+  <script src="script.js"></script>
+</body>
+</html>
